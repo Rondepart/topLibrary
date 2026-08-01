@@ -75,6 +75,21 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#newBookForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#newBookForm > fieldset > label {
+  margin-right: 12px;
+}
+
+.newBookForm-btn-wrapper {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .main {
   background-color: beige;
 }
