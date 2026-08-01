@@ -59,6 +59,22 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-rows: 1fr 4fr 1fr;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.newBook {
+  border-radius: 20px;
+
+  &:hover {
+    box-shadow: 0px 1px 2px black;
+    cursor: pointer;
+  }
+}
+
 .main {
   background-color: beige;
 }
