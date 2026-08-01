@@ -91,11 +91,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main {
-  background-color: beige;
+  background-color: rgb(201, 201, 190);
+  padding: 16px;
 }
 
 .main-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.book-card {
+  flex: 0 0 calc((100% / 2) - 24px);
+  min-width: 300px;
+  background-color: rgb(238, 234, 234);
+  border: 1px solid #575050;
+  border-radius: 8px;
+  padding: 12px;
 }

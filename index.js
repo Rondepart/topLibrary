@@ -20,9 +20,35 @@ function displayLibraryBooks() {
     mainWrapper.innerHTML = '';
 
     myLibrary.forEach(book => {
-        const bookEntry = document.createElement('p');
-        bookEntry.textContent = `${book.title} by ${book.author} — ${book.numOfPages} pages — ${book.haveRead ? 'Have read' : 'Have not read'}`;
-        mainWrapper.appendChild(bookEntry);
+        const bookEntryWrapper = document.createElement('div');
+        bookEntryWrapper.classList.add('book-card');
+
+        const bookInfo = document.createElement('div');
+        bookInfo.classList.add('book-card-info');
+
+        const title = document.createElement('p');
+        title.classList.add('book-card-title');
+        title.textContent = `Book title: ${book.title}`;
+
+        const author = document.createElement('p');
+        author.classList.add('book-card-author');
+        author.textContent = `Book author: ${book.author}`;
+
+        const pages = document.createElement('p');
+        pages.classList.add('book-card-pages');
+        pages.textContent = `Number of pages: ${book.numOfPages}`;
+
+        const status = document.createElement('p');
+        status.classList.add('book-card-status');
+        status.textContent = book.haveRead ? 'Status: Have read' : 'Status: Have not read';
+
+        bookInfo.appendChild(title);
+        bookInfo.appendChild(author);
+        bookInfo.appendChild(pages);
+        bookInfo.appendChild(status);
+
+        bookEntryWrapper.appendChild(bookInfo);
+        mainWrapper.appendChild(bookEntryWrapper);
     });
 }
 
