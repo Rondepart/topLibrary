@@ -21,13 +21,24 @@ function displayLibraryBooks() {
 
     myLibrary.forEach(book => {
         const bookEntry = document.createElement('p');
-        bookEntry.textContent = `${book.title} by ${book.author} — ${book.numOfPages} pages — ${book.haveRead ? 'Read' : 'Not read yet'}`;
+        bookEntry.textContent = `${book.title} by ${book.author} — ${book.numOfPages} pages — ${book.haveRead ? 'Have read' : 'Have not read'}`;
         mainWrapper.appendChild(bookEntry);
     });
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, true);
-addBookToLibrary("1984", "George Orwell", 328, false);
-addBookToLibrary("The Pragmatic Programmer", "David Thomas", 352, true);
+const addBookBtn = document.getElementById('addBookBtn');
 
-displayLibraryBooks();
+addBookBtn.addEventListener('click', () => {
+    const author = document.getElementById('author').value;
+    const title = document.getElementById('bookTitle').value;
+    const pages = document.getElementById('bookPages').value;
+    const haveRead = document.querySelector('input[name="haveRead"]:checked').value === 'Yes';
+
+    if (!author || !title || !pages) return;
+
+    addBookToLibrary(title, author, pages, haveRead);
+    displayLibraryBooks();
+
+    document.getElementById('newBookForm').reset();
+    document.getElementById('newBook').close();
+})
