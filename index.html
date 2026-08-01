@@ -10,7 +10,33 @@
 <body>
     <div class="layout">
         <div class="header">
-            <button class="newBook" type="submit">New Book</button>
+            <button class="newBook" type="button" command="show-modal" commandfor="newBook">New Book</button>
+
+            <dialog id="newBook">
+                <form id="newBookForm">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="bookAuthor" maxlength="50" required>
+
+                    <label for="bookTitle">Book Title:</label>
+                    <input type="text" id="bookTitle" name="bookTitle" maxlength="50" required>
+
+                    <label for="bookPages">Book Pages:</label>
+                    <input type="number" id="bookPages" name="bookPages" required>
+
+                    <fieldset>
+                        <legend>Have you read this book?</legend>
+                        <input type="radio" id="haveReadYes" name="haveRead" value="Yes" checked>
+                        <label for="haveReadYes">Yes</label>
+                        
+                        
+                        <input type="radio" id="haveReadNo" name="haveRead" value="No">
+                        <label for="haveReadNo">No</label>
+                    </fieldset>
+
+                    <button id="addBookBtn" class="newBook" type="button">Add to Library</button>
+                    <button class="newBook" type="button" commandfor="newBook" command="close">Close</button>
+                </form>
+            </dialog>
         </div>
         <div class="main">
             <div class="main-wrapper">
