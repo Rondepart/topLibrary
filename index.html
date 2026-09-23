@@ -13,21 +13,26 @@
             <button class="newBook" type="button" command="show-modal" commandfor="newBook">New Book</button>
 
             <dialog id="newBook">
-                <form id="newBookForm">
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="bookAuthor" maxlength="50" required>
-
-                    <label for="bookTitle">Book Title:</label>
-                    <input type="text" id="bookTitle" name="bookTitle" maxlength="50" required>
-
-                    <label for="bookPages">Book Pages:</label>
-                    <input type="number" id="bookPages" name="bookPages" required>
-
+                <form id="newBookForm" novalidate>
+                    <label for="author">
+                        <span>Author:</span>
+                        <input type="text" id="author" name="bookAuthor" maxlength="50" required>
+                        <span class="author-error"></span>
+                    </label>
+                    <label for="bookTitle">
+                        <span>Book Title:</span>
+                        <input type="text" id="bookTitle" name="bookTitle" maxlength="50" required>
+                        <span class="bookTitle-error"></span>
+                    </label>
+                    <label for="bookPages">
+                        <span>Book Pages:</span>
+                        <input type="number" id="bookPages" name="bookPages" required>
+                        <span class="bookPages-error"></span>
+                    </label>
                     <fieldset>
                         <legend>Have you read this book?</legend>
                         <input type="radio" id="haveReadYes" name="haveRead" value="Yes" checked>
                         <label for="haveReadYes">Yes</label>
-                        
                         
                         <input type="radio" id="haveReadNo" name="haveRead" value="No">
                         <label for="haveReadNo">No</label>
