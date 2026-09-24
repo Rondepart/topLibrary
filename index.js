@@ -74,14 +74,21 @@ function displayLibraryBooks() {
 }
 
 const addBookBtn = document.getElementById('addBookBtn');
+const form = document.querySelector("#newBookForm");
 
-addBookBtn.addEventListener('click', () => {
+form.addEventListener("submit", (e) => {
     const author = document.getElementById('author').value;
     const title = document.getElementById('bookTitle').value;
     const pages = document.getElementById('bookPages').value;
     const haveRead = document.querySelector('input[name="haveRead"]:checked').value === 'Yes';
 
-    if (!author || !title || !pages) return;
+    const isAuthorValid = bookAuthorValid();
+    const isTitleValid = bookTitleValid();
+    const isPagesValid = bookPagesValid();
+    if(!isAuthorValid || !isTitleValid || !isPagesValid) {
+        e.preventDefault();
+        return
+    }
 
     addBookToLibrary(title, author, pages, haveRead);
     displayLibraryBooks();
@@ -109,3 +116,41 @@ mainWrapper.addEventListener('click', (e) => {
         return;
     }
 });
+
+// Form validation
+const bookAuthor = document.querySelector("#author");
+const authorError = document.querySelector(".author-error");
+const bookTitle = document.querySelector("#bookTitle");
+const boookTitleError = document.querySelector(".bookTitle-error");
+const bookPages = document.querySelector("#bookPages");
+const bookPagesError = document.querySelector(".bookPages-error");
+
+function bookAuthorValid() {
+    if(bookAuthor.validity.valueMissing) {
+        authorError.textContent = "Book author is a required field";
+        return false;
+    } else {
+        authorError.textContent = "";
+        return true;
+    }
+}
+
+function bookTitleValid() {
+    if(bookTitle.validity.valueMissing) {
+        boookTitleError.textContent = "Book title is a required field";
+        return false;
+    } else {
+        boookTitleError.textContent = "";
+        return true;
+    }
+}
+
+function bookPagesValid() {
+    if(bookPages.validity.valueMissing) {
+        bookPagesError.textContent = "Book pages is a required field";
+        return false;
+    } else {
+        bookPagesError.textContent = "";
+        return true;
+    }
+}
