@@ -77,6 +77,8 @@ const addBookBtn = document.getElementById('addBookBtn');
 const form = document.querySelector("#newBookForm");
 
 form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
     const author = document.getElementById('author').value;
     const title = document.getElementById('bookTitle').value;
     const pages = document.getElementById('bookPages').value;
@@ -86,7 +88,6 @@ form.addEventListener("submit", (e) => {
     const isTitleValid = bookTitleValid();
     const isPagesValid = bookPagesValid();
     if(!isAuthorValid || !isTitleValid || !isPagesValid) {
-        e.preventDefault();
         return
     }
 
@@ -95,7 +96,7 @@ form.addEventListener("submit", (e) => {
 
     document.getElementById('newBookForm').reset();
     document.getElementById('newBook').close();
-})
+});
 
 mainWrapper.addEventListener('click', (e) => {
     const deleteBtn = e.target.closest('.book-card-delete-btn');
