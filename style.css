@@ -84,6 +84,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 12px;
 }
 
+input:user-invalid {
+    border-color: red;
+}
+
+label span[class$="-error"] {
+    display: block;
+    color: red;
+    font-size: 0.85em;
+    min-height: 1em;
+}
+
 .newBookForm-btn-wrapper {
   margin-top: 12px;
   display: flex;
